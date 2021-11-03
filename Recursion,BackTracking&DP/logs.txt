@@ -1,0 +1,8 @@
+1) Recursion Theory Class:- 
+1.a) Recursion Problems :- Fibonacci Series , Fast Exponentiation-Both recursive and iterative , KthChar codechef ,   
+
+2) Recursion Problem Solving Class :- 
+
+3) BackTracking 
+
+4) Dynamic Programming
