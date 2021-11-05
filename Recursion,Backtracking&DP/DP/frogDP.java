@@ -22,7 +22,7 @@ class Main {
             }
             dp = new int[n];
             Arrays.fill(dp,-1);
-            System.out.println(frogB(array,0,k));
+            System.out.println(frogBiterative(array,0,k));
             fw.close();
         } catch (Exception e) {
             return;
@@ -94,7 +94,21 @@ class Main {
         }
         return dp[indx] = cost;
     }
-
+    static int frogBiterative(int[] array,int indx,int k){
+        int n = array.length;
+        dp[n-1]=0;
+        for(int i=n-2;i>=0;i--){
+            dp[i] = Integer.MAX_VALUE;
+            for(int step=1;step<=k;step++){
+                if(i+step<n){
+                    dp[i] = Math.min(dp[i],Math.abs(array[i]-array[i+step])+dp[i+step]);
+                }else{
+                    break;
+                }
+            }
+        }
+        return dp[0];
+    }
 }
 class FastReader
 {
