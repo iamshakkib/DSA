@@ -16,12 +16,14 @@ class Main {
             //out.close();
             int n = fr.nextInt();
             int[] array = new int[n];
+            int k = fr.nextInt();
             for(int i=0;i<n;i++){
                 array[i]= fr.nextInt();
             }
             dp = new int[n];
             Arrays.fill(dp,-1);
-            System.out.println(frogAiterativereverse(array));
+            System.out.println(frogB(array,0,k));
+            fw.close();
         } catch (Exception e) {
             return;
         }
@@ -72,6 +74,25 @@ class Main {
             }
         }
         return dp[0];
+    }
+    static int frogB(int[] array,int indx,int k){
+        int n = array.length;
+        //dp[n-1] = 0;
+        if(indx==n-1){
+            return dp[indx] = 0;
+        }
+        if(dp[indx]!=-1){
+            return dp[indx];
+        }
+        int cost=Integer.MAX_VALUE;
+        for(int steps=1;steps<=k;steps++){
+            if(indx+steps<n){
+                cost = Math.min(cost,Math.abs(array[indx]-array[indx+steps])+frogB(array,indx+steps,k));
+            }else{
+                break;
+            }
+        }
+        return dp[indx] = cost;
     }
 
 }
