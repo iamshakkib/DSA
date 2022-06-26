@@ -25,7 +25,8 @@ class CycleDetectDG{
 			//System.out.println(checkBipartite(adj,V)==true ? "True":"False");
 			//System.out.println(isBipartite(adj,V)==true ? "True":"False");
 			int src = 0;
-			System.out.println();
+			int dest = 7;
+			shortestPath(adj,V,src);
 		}
 	}
 	static boolean CycleDetectinDG(int V, ArrayList<ArrayList<Integer>> adj){
@@ -159,7 +160,11 @@ class CycleDetectDG{
 
     static void shortestPath(ArrayList<ArrayList<Integer>> adj, int V, int src){
     	int[] dist = new int[V];
+    	for(int i=0;i<V;i++){
+    		dist[i] = 100000000;
+    	}
     	ArrayDeque<Integer> dq = new ArrayDeque<>();
+    	dist[src] = 0;
     	dq.push(src);
     	int node;
     	while(!dq.isEmpty()){
