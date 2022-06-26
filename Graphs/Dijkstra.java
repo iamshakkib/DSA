@@ -55,6 +55,8 @@ import java.lang.*;
  		}
  	}
 }
+// creating the pair class so that min heap able to compare and 
+// we can pop the min node according to the weight.
  class Pair implements Comparator<Pair>{
 	private int v;
 	private int weight;
