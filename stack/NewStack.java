@@ -4,11 +4,13 @@ import java.lang.*;
 
 class NewStack{
 	public static void main(String[] args) {
-		int[] arr = {100,80,60,70,60,75,85};
-		ArrayList<Integer> list = ngl(arr);
-		//Collections.reverse(list);
+		int[] arr = {4,5,2,10,8};
+		ArrayList<Integer> list = nsr(arr);
+		Collections.reverse(list);
 		System.out.println(list.toString());
 	}
+
+	//ngr tested to gfg
 	static ArrayList<Integer> ngr(int[] arr){
 		ArrayDeque<Integer> dq = new ArrayDeque<>();
 		ArrayList<Integer> ans = new ArrayList<>();
@@ -27,7 +29,7 @@ class NewStack{
 					dq.offerLast(arr[j]); 
 					System.out.println("last element in dq "+dq.peekLast());
 				}else{
-					while(dq.size()>0&&arr[j]>dq.peekLast()){
+					while(dq.size()>0&&arr[j]>=dq.peekLast()){
 						dq.pollLast();
 					}
 					if(dq.size()==0){
@@ -62,6 +64,53 @@ class NewStack{
 					ans.add(dq.peekLast());
 				}
 				dq.offerLast(arr[j]);
+			}
+		}
+		return ans;
+	}
+
+	// 4 5 2 10 8
+
+	static ArrayList<Integer> nsl(int[] arr){
+		ArrayList<Integer> ans = new ArrayList<>();
+		ArrayDeque<Integer> dq = new ArrayDeque<>();
+		for(int i=0;i<arr.length;i++){
+			if(dq.size()==0){
+				dq.offerLast(arr[i]);
+				ans.add(-1);
+			}else{
+				while(dq.size()>0&&arr[i]<dq.peekLast()){
+					dq.pollLast();
+				}
+				if(dq.size()==0){
+					ans.add(-1);
+				}else{
+					ans.add(dq.peekLast());
+				}
+				dq.offerLast(arr[i]);
+			}
+		}
+		return ans;
+	}
+
+	static ArrayList<Integer> nsr(int[] arr){
+		ArrayList<Integer> ans = new ArrayList<>();
+		ArrayDeque<Integer> dq = new ArrayDeque<>();
+		int j = arr.length;
+		for(int i=j-1;i>=0;i--){
+			if(dq.size()==0){
+				dq.offerLast(arr[i]);
+				ans.add(-1);
+			}else{
+				while(dq.size()>0&&arr[i]<dq.peekLast()){
+					dq.pollLast();
+				}
+				if(dq.size()==0){
+					ans.add(-1);
+				}else{
+					ans.add(dq.peekLast());
+				}
+				dq.offerLast(arr[i]);
 			}
 		}
 		return ans;
